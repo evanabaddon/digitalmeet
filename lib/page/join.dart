@@ -52,16 +52,6 @@ class _JoinPageState extends State<JoinPage> {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.contain,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: namecontroller,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
           Container(
             padding: const EdgeInsets.all(16),
             child: Text(
