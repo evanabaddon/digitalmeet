@@ -15,7 +15,7 @@ class _CreatePageState extends State<CreatePage> {
   String code = '';
   createCode() {
     setState(() {
-      code = const Uuid().v1().substring(0, 6);
+      code = "jagool-" + const Uuid().v1().substring(0, 6);
     });
   }
 

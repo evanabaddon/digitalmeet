@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:digitalmeet/conf.dart';
 import 'package:flutter/material.dart';
+import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:lottie/lottie.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 
@@ -20,8 +21,14 @@ class _JoinPageState extends State<JoinPage> {
   joinmeeting() async {
     try {
       Map<FeatureFlagEnum, bool> feautureflags = {
-        FeatureFlagEnum.WELCOME_PAGE_ENABLED: false
+        FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
+        FeatureFlagEnum.INVITE_ENABLED: false,
+        FeatureFlagEnum.CALL_INTEGRATION_ENABLED: false,
       };
+      FeatureFlag featureFlag = FeatureFlag();
+      featureFlag.welcomePageEnabled = false;
+      featureFlag.resolution = FeatureFlagVideoResolution.MD_RESOLUTION;
+
       if (Platform.isAndroid) {
         feautureflags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] = false;
       } else if (Platform.isIOS) {
@@ -32,6 +39,7 @@ class _JoinPageState extends State<JoinPage> {
         ..audioMuted = isAudioMuted
         ..videoMuted = isVideoMuted
         ..featureFlags.addAll(feautureflags);
+      featureFlag = featureFlag;
 
       await JitsiMeet.joinMeeting(options);
     } catch (e) {
