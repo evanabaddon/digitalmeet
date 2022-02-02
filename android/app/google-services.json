@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161901015512",
+    "project_id": "digital-meet-b264e",
+    "storage_bucket": "digital-meet-b264e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161901015512:android:aca544a1ab52db4cf242ad",
+        "android_client_info": {
+          "package_name": "com.digitaloka.digitalmeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161901015512-oiht30ga0g1jja8a5rtuqi0kd2aeugra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBns7ZstXGkPZlMoD0I4VrPfFUb6k4WNZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161901015512-oiht30ga0g1jja8a5rtuqi0kd2aeugra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
