@@ -89,7 +89,7 @@ class _JoinPageState extends State<JoinPage> {
                           height: 250,
                           width: MediaQuery.of(context).size.width,
                           child: Lottie.asset(
-                            'assets/lottie/meeting.json',
+                            'assets/lottie/info.json',
                             height: 250,
                             width: MediaQuery.of(context).size.width,
                             fit: BoxFit.fill,
