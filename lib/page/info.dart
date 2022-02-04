@@ -2,6 +2,7 @@ import 'package:digitalmeet/conf.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -54,22 +55,32 @@ class InfoPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(
-                  Icons.email,
-                  color: Conf().primaryColor,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "digitaloka@gmail.com",
-                  style: Conf().textStyle.copyWith(color: Conf().primaryColor),
-                ),
-                const SizedBox(
-                  height: 50,
-                )
-              ])
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.email,
+                    color: Conf().primaryColor,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "digitaloka@gmail.com",
+                    style:
+                        Conf().textStyle.copyWith(color: Conf().primaryColor),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const BannerAd(
+                size: BannerSize.ADAPTIVE,
+              )
             ],
           ),
         ),

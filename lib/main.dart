@@ -1,7 +1,10 @@
+import 'package:digitalmeet/ads.dart';
 import 'package:digitalmeet/page/home.dart';
 import 'package:flutter/material.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
-void main() {
+void main() async {
+  await initAds();
   runApp(const MyApp());
 }
 
@@ -21,4 +24,16 @@ class MyApp extends StatelessWidget {
       color: Colors.white,
     );
   }
+}
+
+Future<void> initAds() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.initialize(
+    nativeAdUnitId: nativeAdUnitId,
+    bannerAdUnitId: bannerAdUnitId,
+    interstitialAdUnitId: interstitialAdUnitId,
+    rewardedAdUnitId: rewardedAdUnitId,
+    appOpenAdUnitId: appOpenAdUnitId,
+    rewardedInterstitialAdUnitId: rewardedInterstitialAdUnitId,
+  );
 }

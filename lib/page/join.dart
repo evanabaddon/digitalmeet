@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:lottie/lottie.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 class JoinPage extends StatefulWidget {
   const JoinPage({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class _JoinPageState extends State<JoinPage> {
   TextEditingController roomcontroller = TextEditingController();
   bool? isVideoMuted = true;
   bool? isAudioMuted = true;
+
+  AppOpenAd appOpenAd = AppOpenAd()..load();
 
   joinmeeting() async {
     try {
@@ -147,7 +150,14 @@ class _JoinPageState extends State<JoinPage> {
                         horizontal: 80, vertical: 15),
                     primary: Conf().primaryColor,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
+                    (!appOpenAd.isAvailable);
+                    await appOpenAd.load();
+                    if (appOpenAd.isAvailable) {
+                      await appOpenAd.show();
+                      // Load a new ad right after the other one was closed
+                      appOpenAd.load();
+                    }
                     joinmeeting();
                   },
                   child: const Text(

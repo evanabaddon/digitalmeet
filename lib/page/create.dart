@@ -2,6 +2,7 @@ import 'package:digitalmeet/conf.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 class CreatePage extends StatefulWidget {
@@ -18,6 +19,11 @@ class _CreatePageState extends State<CreatePage> {
       code = "jagool-" + const Uuid().v1().substring(0, 6);
     });
   }
+
+  InterstitialAd interstitialAd = InterstitialAd()
+    ..load(timeout: const Duration(minutes: 1));
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +75,12 @@ class _CreatePageState extends State<CreatePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  (!interstitialAd.isAvailable);
+                  await interstitialAd.load();
+                  (interstitialAd.isAvailable);
+                  interstitialAd.show();
+
                   createCode();
                 },
                 child: const Text(

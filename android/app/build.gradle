@@ -53,6 +53,7 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -72,5 +73,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:<version>'
     implementation group: 'com.google.android.material', name: 'material', version: '1.1.0-alpha05'
-
+    implementation 'com.google.android.gms:play-services-ads:20.5.0'
+    implementation 'com.android.support:multidex:1.0.0'
 }
