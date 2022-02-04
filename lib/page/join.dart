@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:digitalmeet/conf.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:lottie/lottie.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 
 class JoinPage extends StatefulWidget {
   const JoinPage({Key? key}) : super(key: key);
@@ -50,18 +52,55 @@ class _JoinPageState extends State<JoinPage> {
     }
   }
 
-  bool isLoading = true;
+  // lottie
+  late final Future<LottieComposition> _joincomposition;
+  @override
+  void initState() {
+    super.initState();
+
+    _joincomposition = _loadComposition();
+  }
+
+  Future<LottieComposition> _loadComposition() async {
+    var assetData = await rootBundle.load('assets/lottie/info.json');
+    return await LottieComposition.fromByteData(assetData);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
-          LottieBuilder.asset(
-            'assets/lottie/meeting.json',
+          SizedBox(
             height: 250,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.contain,
+            child: FutureBuilder<LottieComposition>(
+              future: _joincomposition,
+              builder: (context, snapshot) {
+                var composition = snapshot.data;
+                if (composition != null) {
+                  return Lottie(composition: composition);
+                } else {
+                  return Center(
+                    child: Center(
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey[200]!,
+                        highlightColor: Colors.white,
+                        child: Container(
+                          height: 250,
+                          width: MediaQuery.of(context).size.width,
+                          child: Lottie.asset(
+                            'assets/lottie/meeting.json',
+                            height: 250,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(16),

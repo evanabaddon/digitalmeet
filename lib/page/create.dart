@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:uuid/uuid.dart';
 
 class CreatePage extends StatefulWidget {
@@ -23,17 +24,56 @@ class _CreatePageState extends State<CreatePage> {
   InterstitialAd interstitialAd = InterstitialAd()
     ..load(timeout: const Duration(minutes: 1));
 
-  bool isLoading = false;
+  // lottie
+  late final Future<LottieComposition> _createcomposition;
+  @override
+  void initState() {
+    super.initState();
+
+    _createcomposition = _loadComposition();
+  }
+
+  Future<LottieComposition> _loadComposition() async {
+    var assetData = await rootBundle.load('assets/lottie/about.json');
+    return await LottieComposition.fromByteData(assetData);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
-          LottieBuilder.asset('assets/lottie/info.json',
-              height: 250,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.contain),
+          SizedBox(
+            height: 250,
+            child: FutureBuilder<LottieComposition>(
+              future: _createcomposition,
+              builder: (context, snapshot) {
+                var composition = snapshot.data;
+                if (composition != null) {
+                  return Lottie(composition: composition);
+                } else {
+                  return Center(
+                    child: Center(
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey[200]!,
+                        highlightColor: Colors.white,
+                        child: Container(
+                          height: 250,
+                          width: MediaQuery.of(context).size.width,
+                          child: Lottie.asset(
+                            'assets/lottie/meeting.json',
+                            height: 250,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+          ),
           Container(
             padding: const EdgeInsets.all(16),
             child: Text(
@@ -78,9 +118,9 @@ class _CreatePageState extends State<CreatePage> {
                 onPressed: () async {
                   (!interstitialAd.isAvailable);
                   await interstitialAd.load();
-                  (interstitialAd.isAvailable);
-                  interstitialAd.show();
-
+                  if (interstitialAd.isAvailable) {
+                    interstitialAd.show();
+                  }
                   createCode();
                 },
                 child: const Text(

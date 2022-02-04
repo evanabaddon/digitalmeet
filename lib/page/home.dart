@@ -29,15 +29,23 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
   loadData() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         isLoading = false;
       });
     });
   }
 
+  // Future loading = Future.delayed(const Duration(seconds: 3));
+
+  // @override
+  // void setState() {
+  //   loading;
+  // }
+
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 3));
     return Scaffold(
         appBar: AppBar(
           actions: [

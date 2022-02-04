@@ -1,7 +1,6 @@
 import 'package:digitalmeet/conf.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 class InfoPage extends StatelessWidget {
@@ -26,12 +25,12 @@ class InfoPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              LottieBuilder.asset(
-                'assets/lottie/about.json',
-                height: 300,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.contain,
+              const SizedBox(
+                height: 200,
               ),
               Image.asset(
                 'assets/images/logo.png',
