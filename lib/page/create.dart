@@ -57,11 +57,11 @@ class _CreatePageState extends State<CreatePage> {
                       child: Shimmer.fromColors(
                         baseColor: Colors.grey[200]!,
                         highlightColor: Colors.white,
-                        child: Container(
+                        child: SizedBox(
                           height: 250,
                           width: MediaQuery.of(context).size.width,
                           child: Lottie.asset(
-                            'assets/lottie/meeting.json',
+                            'assets/lottie/about.json',
                             height: 250,
                             width: MediaQuery.of(context).size.width,
                             fit: BoxFit.fill,

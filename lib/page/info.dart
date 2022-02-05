@@ -30,7 +30,7 @@ class InfoPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               const SizedBox(
-                height: 200,
+                height: 50,
               ),
               Image.asset(
                 'assets/images/logo.png',

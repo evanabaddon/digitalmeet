@@ -85,7 +85,7 @@ class _JoinPageState extends State<JoinPage> {
                       child: Shimmer.fromColors(
                         baseColor: Colors.grey[200]!,
                         highlightColor: Colors.white,
-                        child: Container(
+                        child: SizedBox(
                           height: 250,
                           width: MediaQuery.of(context).size.width,
                           child: Lottie.asset(
