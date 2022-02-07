@@ -17,7 +17,7 @@ String get bannerAdUnitId {
   if (kDebugMode) {
     return MobileAds.bannerAdTestUnitId;
   } else {
-    return 'ca-app-pub-3940256099942544/6300978111';
+    return 'ca-app-pub-1719838049880700/5418449268';
   }
 }
 
@@ -27,7 +27,7 @@ String get interstitialAdUnitId {
   if (kDebugMode) {
     return MobileAds.interstitialAdTestUnitId;
   } else {
-    return 'ca-app-pub-3940256099942544/1033173712';
+    return 'ca-app-pub-1719838049880700/6293203770';
   }
 }
 
@@ -46,7 +46,7 @@ String get appOpenAdUnitId {
   if (kDebugMode) {
     return MobileAds.appOpenAdTestUnitId;
   } else {
-    return 'ca-app-pub-3940256099942544/3419835294';
+    return 'ca-app-pub-1719838049880700/6293203770';
   }
 }
 

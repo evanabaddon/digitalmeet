@@ -103,11 +103,21 @@ class _CreatePageState extends State<CreatePage> {
               height: 50,
               width: 200,
               child: Center(
-                child: Text(
-                  code,
-                  style: const TextStyle(fontSize: 24),
-                ),
-              ),
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    code,
+                    style: const TextStyle(fontSize: 24),
+                  ),
+                  // IconButton(
+                  //   icon: const Icon(Icons.copy),
+                  //   onPressed: () {
+                  //     Clipboard.setData(ClipboardData(text: code));
+                  //   },
+                  // ),
+                ],
+              )),
             ),
           ),
           const SizedBox(height: 32),
